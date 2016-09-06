@@ -1,6 +1,7 @@
 html, body {
-  background-color: black;
+  background-color: #111;
   height: 100%;
+  color: #fff;
 }
 
 /* Container for note boxes */
@@ -88,4 +89,19 @@ html, body {
 
 #f:hover {
   background-color: rgba(85, 229, 0, 0.6);
+}
+
+
+button {
+  margin-top: 50px;
+  padding: 20px 40px;
+  background: rgba(255,255,255,0.2);
+  border: none;
+  cursor: pointer;
+  color: #fff;
+  font-size: 1em;
+}
+
+button:focus {
+  outline: none;
 }

@@ -1,5 +1,6 @@
 var KEYS = ['c', 'd', 'e', 'f'];
 var NOTE_DURATION = 1000;
+var SIMON_NOTE_DURATION = 500;
 
 // NoteBox
 //
@@ -75,8 +76,51 @@ KEYS.forEach(function (key) {
 // 	setTimeout(notes[key].play.bind(null, key), i * NOTE_DURATION);
 // });
 
+var level = 1;
+var entries = [];
+var userEntries = [];
+var isPlayingSimon = false;
 
 function onClick(key) {
-	repeatNotes.push(notes[key]);
-	setTimeout(notes[key].play.bind(null, key), 1100);
+	if (!isPlayingSimon) {
+		repeat(key);
+	}
+	
+	userEntries.push(key);
+	console.log("User " + userEntries);
+	for (i = 0; i < userEntries.length; i++) {
+		if (userEntries[i] == entries[i] && i == entries.length - 1) {
+			console.log("correct");
+			document.getElementById('score').innerHTML = "Score: " + level;
+			level++;
+			userEntries = [];
+			simon();
+		} else if (userEntries[i] != entries[i]) {
+			console.log("Restart");
+			document.getElementById('score').innerHTML = "Restart";
+			level = 1;
+			entries = [];
+			userEntries = [];
+		}
+	}
+}
+
+function repeat(key) {
+	setTimeout(notes[key].play.bind(null, key), 2500);
+}
+
+function simon() {
+	isPlayingSimon = true;
+	entries = [];
+	notes.disable;
+	for (i = 0; i < level; i++) {
+		var buttonNumber = Math.floor((Math.random() * 4));
+		var buttonKey = KEYS[buttonNumber];
+		entries.push(buttonKey);
+		console.log("Comp  " + entries);
+		setTimeout(notes[buttonKey].play.bind(null, buttonKey), i*NOTE_DURATION);
+	}
+	
+	setTimeout(notes.enable, 2000);
+	
 }

@@ -4,3 +4,4 @@ The file references in the HTML file start with /.. Because of this the Chrome c
 
 In the Easy Task Description, it was a little ambiguous to me as to what it meant by "If they play multiple notes with less than 2.5 seconds between each note, you should wait them to finish". Hence, based on my understanding, I wrote the code so that once the user presses a button, they can still press another ones until 2.5 seconds and then it will start repeating the pattern as it was entered.
 
+In the Simon Game, I was unable to have a specific time difference between two rounds. So as soon as the user completes a round, the next note sounds immediately, causing some confusion. Otherwise, this version of the simon game works.
