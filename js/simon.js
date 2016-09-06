@@ -68,9 +68,15 @@ function NoteBox(key, onClick) {
 var notes = {};
 
 KEYS.forEach(function (key) {
-	notes[key] = new NoteBox(key);
+	notes[key] = new NoteBox(key, onClick);
 });
 
-KEYS.concat(KEYS.slice().reverse()).forEach(function(key, i) {
-	setTimeout(notes[key].play.bind(null, key), i * NOTE_DURATION);
-});
+// KEYS.concat(KEYS.slice().reverse()).forEach(function(key, i) {
+// 	setTimeout(notes[key].play.bind(null, key), i * NOTE_DURATION);
+// });
+
+
+function onClick(key) {
+	repeatNotes.push(notes[key]);
+	setTimeout(notes[key].play.bind(null, key), 1100);
+}
